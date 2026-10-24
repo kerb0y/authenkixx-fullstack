@@ -1,0 +1,1 @@
+{"dependencies":{"cors":"^2.8.5","express":"^4.19.2","joi":"^17.13.3"},"description":"Prototype Express backend for Authenkixx centralized inventory (dummy data only).","main":"server.js","name":"authenkixx-prototype-backend","scripts":{"dev":"node --watch server.js","smoke":"node tests/smoke.js","start":"node server.js"},"type":"commonjs","version":"0.1.0-prototype"}

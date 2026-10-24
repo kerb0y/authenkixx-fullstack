@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Authenkixx Prototype - Inventory Terpusat</title>
+    <!-- Tailwind via CDN for the prototype only. In production, install
+         Tailwind properly (see README) instead of the CDN build. -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body class="bg-slate-100 text-slate-900">
+    <header class="bg-slate-900 text-white">
+      <div class="max-w-5xl mx-auto px-4 py-4 flex flex-wrap gap-3 items-center justify-between">
+        <h1 class="text-lg font-bold">Authenkixx Prototype <span class="font-normal text-amber-300">(Data Contoh)</span></h1>
+        <nav class="flex gap-2 text-sm">
+          <button data-page="list" class="nav-btn bg-white text-slate-900 px-3 py-1 rounded">Produk</button>
+          <button data-page="stock" class="nav-btn bg-slate-700 px-3 py-1 rounded">Update Stok</button>
+          <button data-page="chat" class="nav-btn bg-slate-700 px-3 py-1 rounded">Chat AI</button>
+          <button data-page="insights" class="nav-btn bg-slate-700 px-3 py-1 rounded">Ringkasan</button>
+        </nav>
+      </div>
+    </header>
+    <main id="app" class="max-w-5xl mx-auto px-4 py-6"></main>
+    <footer class="max-w-5xl mx-auto px-4 pb-8 text-sm text-slate-500">
+      Prototype only. Semua angka adalah data contoh (dummy), bukan data nyata UMKM.
+      Tidak ada sinkronisasi otomatis ke Instagram, Facebook, Carousell, atau Shopee.
+    </footer>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
