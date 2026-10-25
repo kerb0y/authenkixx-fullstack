@@ -1,1 +1,2852 @@
-{"data_label":"dummy","insights":{"by_availability":{"habis":1,"menipis":2,"tersedia":3},"data_science":{"baseline_model":{"accuracy":0.7833,"data_label":"dummy","features":["stock_start","avg_daily_units","price"],"limitation":"Dummy data only, tiny weekly sample, and stock in the generator is shared across channels, so this baseline is a pipeline demo, not a forecast to act on.","macro_f1":0.7044,"split":"time split: train weeks < 38, test weeks >= 38 (no leakage: features from previous week only, scaler fitted on train only)","target":"low_stock_next_week (stock_end <= 5 in following week)","test_positive_rate":0.2,"test_rows":60,"train_rows":40},"business_summary":{"data_label":"dummy","date_range_dummy":["2026-09-01","2026-09-30"],"final_stock_dummy":{"DUMMY-001":41,"DUMMY-002":35,"DUMMY-003":5,"DUMMY-004":127,"DUMMY-005":14},"low_stock_rows_dummy":149,"rows":600,"total_revenue_dummy_idr":203667000,"total_units_sold_dummy":633,"units_by_channel_dummy":{"Carousell":150,"Facebook":178,"Instagram":152,"Shopee":153},"units_by_product_dummy":{"Sepatu Kasual Cokelat (Contoh)":119,"Sepatu Lari Ringan (Contoh)":110,"Sepatu Slip-On Abu (Contoh)":116,"Sepatu Sneakers Hitam (Contoh)":166,"Sepatu Sneakers Putih (Contoh)":122}},"data_label":"dummy","source_dir":"static demo (GitHub Pages)"},"data_science_note":"Data Science dummy, dari demo statis GitHub Pages (bukan dari backend).","low_stock_count":3,"low_stock_products":[{"id":"DUMMY-002","name":"Sepatu Sneakers Hitam (Contoh)","stock":4},{"id":"DUMMY-003","name":"Sepatu Lari Ringan (Contoh)","stock":0},{"id":"DUMMY-006","name":"Sepatu Sneakers Merah (Contoh)","stock":3}],"total_products":6,"total_stock":46},"movements":[{"created_at":"2026-10-24T00:00:00.000Z","id":"MOV-DUMMY-001","note":"Stok awal contoh","product_id":"DUMMY-001","quantity":12,"type":"in"}],"note":"Static demo data for GitHub Pages only. Same dummy catalogue as backend/data/inventory.json and the Data Science dummy outputs. Read-only: stock updates and AI chat still need the backend.","products":[{"availability":"tersedia","channels":["Instagram","Shopee"],"data_label":"dummy","id":"DUMMY-001","name":"Sepatu Sneakers Putih (Contoh)","price":299000,"stock":12},{"availability":"menipis","channels":["Instagram","Facebook"],"data_label":"dummy","id":"DUMMY-002","name":"Sepatu Sneakers Hitam (Contoh)","price":329000,"stock":4},{"availability":"habis","channels":["Shopee","Carousell"],"data_label":"dummy","id":"DUMMY-003","name":"Sepatu Lari Ringan (Contoh)","price":459000,"stock":0},{"availability":"tersedia","channels":["Facebook","Carousell"],"data_label":"dummy","id":"DUMMY-004","name":"Sepatu Kasual Cokelat (Contoh)","price":279000,"stock":20},{"availability":"tersedia","channels":["Instagram","Carousell"],"data_label":"dummy","id":"DUMMY-005","name":"Sepatu Slip-On Abu (Contoh)","price":249000,"stock":7},{"availability":"menipis","channels":["Shopee","Instagram"],"data_label":"dummy","id":"DUMMY-006","name":"Sepatu Sneakers Merah (Contoh)","price":349000,"stock":3}]}
+{
+  "data_label": "dummy",
+  "insights": {
+    "total_products": 120,
+    "total_stock": 2302,
+    "low_stock_count": 30,
+    "low_stock_products": [
+      {
+        "id": "NK-DUMMY-018",
+        "name": "Nike Cortez (Contoh)",
+        "stock": 1
+      },
+      {
+        "id": "NK-DUMMY-021",
+        "name": "Nike Air Max SC (Contoh)",
+        "stock": 0
+      },
+      {
+        "id": "NK-DUMMY-022",
+        "name": "Nike P-6000 (Contoh)",
+        "stock": 1
+      },
+      {
+        "id": "NK-DUMMY-028",
+        "name": "Nike Dunk Low (Contoh)",
+        "stock": 4
+      },
+      {
+        "id": "NK-DUMMY-029",
+        "name": "Nike Blazer Mid '77 (Contoh)",
+        "stock": 4
+      },
+      {
+        "id": "NK-DUMMY-031",
+        "name": "Nike Air Jordan 1 Mid (Contoh)",
+        "stock": 3
+      },
+      {
+        "id": "NK-DUMMY-036",
+        "name": "Nike Dunk High (Contoh)",
+        "stock": 3
+      },
+      {
+        "id": "NK-DUMMY-038",
+        "name": "Nike Air Max 90 (Contoh)",
+        "stock": 0
+      },
+      {
+        "id": "NK-DUMMY-039",
+        "name": "Nike Air Max 270 (Contoh)",
+        "stock": 3
+      },
+      {
+        "id": "NK-DUMMY-040",
+        "name": "Nike Dunk Low (Contoh)",
+        "stock": 1
+      },
+      {
+        "id": "NK-DUMMY-044",
+        "name": "Nike Air Max 97 (Contoh)",
+        "stock": 0
+      },
+      {
+        "id": "NK-DUMMY-046",
+        "name": "Nike P-6000 (Contoh)",
+        "stock": 3
+      },
+      {
+        "id": "NK-DUMMY-050",
+        "name": "Nike Pegasus 40 (Contoh)",
+        "stock": 5
+      },
+      {
+        "id": "NK-DUMMY-053",
+        "name": "Nike Structure 25 (Contoh)",
+        "stock": 2
+      },
+      {
+        "id": "NK-DUMMY-056",
+        "name": "Nike Zoom Fly 5 (Contoh)",
+        "stock": 1
+      },
+      {
+        "id": "NK-DUMMY-059",
+        "name": "Nike Pegasus 41 (Contoh)",
+        "stock": 2
+      },
+      {
+        "id": "NK-DUMMY-060",
+        "name": "Nike Pegasus 40 (Contoh)",
+        "stock": 4
+      },
+      {
+        "id": "NK-DUMMY-062",
+        "name": "Nike Invincible 3 (Contoh)",
+        "stock": 0
+      },
+      {
+        "id": "NK-DUMMY-066",
+        "name": "Nike Zoom Fly 5 (Contoh)",
+        "stock": 1
+      },
+      {
+        "id": "NK-DUMMY-068",
+        "name": "Nike Alphafly 3 (Contoh)",
+        "stock": 5
+      },
+      {
+        "id": "NK-DUMMY-069",
+        "name": "Nike Pegasus 41 (Contoh)",
+        "stock": 4
+      },
+      {
+        "id": "NK-DUMMY-071",
+        "name": "Nike Vomero 17 (Contoh)",
+        "stock": 0
+      },
+      {
+        "id": "NK-DUMMY-082",
+        "name": "Nike Wildhorse 9 (Contoh)",
+        "stock": 5
+      },
+      {
+        "id": "NK-DUMMY-090",
+        "name": "Nike Ultrafly (Contoh)",
+        "stock": 2
+      },
+      {
+        "id": "NK-DUMMY-095",
+        "name": "Nike Zegama 2 (Contoh)",
+        "stock": 2
+      },
+      {
+        "id": "NK-DUMMY-096",
+        "name": "Nike Wildhorse 9 (Contoh)",
+        "stock": 5
+      },
+      {
+        "id": "NK-DUMMY-097",
+        "name": "Nike Calm Slide (Contoh)",
+        "stock": 5
+      },
+      {
+        "id": "NK-DUMMY-099",
+        "name": "Nike Victori One Slide (Contoh)",
+        "stock": 0
+      },
+      {
+        "id": "NK-DUMMY-111",
+        "name": "Nike Sabrina 3 (Contoh)",
+        "stock": 2
+      },
+      {
+        "id": "NK-DUMMY-114",
+        "name": "Nike Book 1 (Contoh)",
+        "stock": 1
+      }
+    ],
+    "by_availability": {
+      "tersedia": 90,
+      "menipis": 24,
+      "habis": 6
+    },
+    "data_science": {
+      "business_summary": {
+        "data_label": "dummy",
+        "source": "data/nike_dummy/nike_products_dummy.csv and data/nike_dummy/nike_sales_dummy.csv (generator: analysis/generate_nike_dummy.py, seed 42)",
+        "rows": 86400,
+        "date_range_dummy": [
+          "2026-01-01",
+          "2026-06-29"
+        ],
+        "total_units_sold_dummy": 82526,
+        "total_revenue_dummy_idr": 186375340000,
+        "units_by_channel_dummy": {
+          "Instagram": 23254,
+          "Facebook": 21288,
+          "Shopee": 20425,
+          "Carousell": 17559
+        },
+        "units_by_product_dummy": {
+          "Nike Air Max SC (Contoh)": 3584,
+          "Nike Dunk High (Contoh)": 3477,
+          "Nike Air Max 270 (Contoh)": 3445,
+          "Nike Cortez (Contoh)": 3272,
+          "Nike Blazer Mid '77 (Contoh)": 3270,
+          "Nike Air Force 1 '07 (Contoh)": 3174,
+          "Nike Air Jordan 1 Mid (Contoh)": 3018,
+          "Nike P-6000 (Contoh)": 2988,
+          "Nike Air Max 97 (Contoh)": 2915,
+          "Nike Air Max 90 (Contoh)": 2835,
+          "Nike Air Max Pulse (Contoh)": 2712,
+          "Nike Dunk Low (Contoh)": 2656,
+          "Nike Streakfly (Contoh)": 2462,
+          "Nike Vomero 17 (Contoh)": 2437,
+          "Nike Pegasus 41 (Contoh)": 2314,
+          "Nike Invincible 3 (Contoh)": 2303,
+          "Nike Zoom Fly 5 (Contoh)": 2273,
+          "Nike Pegasus 40 (Contoh)": 2216,
+          "Nike Winflo 11 (Contoh)": 2157,
+          "Nike Alphafly 3 (Contoh)": 1933,
+          "Nike React Infinity 4 (Contoh)": 1885,
+          "Nike Structure 25 (Contoh)": 1869,
+          "Nike Zegama 2 (Contoh)": 1726,
+          "Nike Wildhorse 9 (Contoh)": 1702,
+          "Nike Pegasus Trail 5 (Contoh)": 1664,
+          "Nike Terra Kiger 10 (Contoh)": 1575,
+          "Nike Calm Slide (Contoh)": 1310,
+          "Nike Asuna 2 Slide (Contoh)": 1267,
+          "Nike Victori One Slide (Contoh)": 1264,
+          "Nike Trail 4 (Contoh)": 1158,
+          "Nike Offcourt Slide (Contoh)": 1129,
+          "Nike Calm Mule (Contoh)": 1100,
+          "Nike Juniper Trail 3 (Contoh)": 1021,
+          "Nike Calm Sandal (Contoh)": 1012,
+          "Nike Ultrafly (Contoh)": 978,
+          "Nike Ja 3 (Contoh)": 711,
+          "Nike Book 1 (Contoh)": 629,
+          "Nike G.T. Cut 3 (Contoh)": 609,
+          "Nike LeBron 22 (Contoh)": 542,
+          "Nike Flex Experience 12 (Contoh)": 537,
+          "Nike Metcon 9 (Contoh)": 520,
+          "Nike KD 17 (Contoh)": 507,
+          "Nike SuperRep Go 3 (Contoh)": 505,
+          "Nike Sabrina 3 (Contoh)": 491,
+          "Nike Zoom Metcon (Contoh)": 477,
+          "Nike Free Metcon 6 (Contoh)": 472,
+          "Nike MC Trainer 3 (Contoh)": 425
+        },
+        "units_by_category_dummy": {
+          "Sneakers": 37346,
+          "Running": 21849,
+          "Trail Running": 9824,
+          "Sandal dan Clogs": 7082,
+          "Basketball": 3489,
+          "Training": 2936
+        },
+        "low_stock_rows_dummy": 21600,
+        "low_stock_rows_definition_dummy": "Sales rows for products whose current dummy stock is <= 5 (the Nike sales file has no daily stock trajectory).",
+        "final_stock_dummy": {
+          "NK-DUMMY-001": 25,
+          "NK-DUMMY-002": 18,
+          "NK-DUMMY-003": 18,
+          "NK-DUMMY-004": 8,
+          "NK-DUMMY-005": 35,
+          "NK-DUMMY-006": 18,
+          "NK-DUMMY-007": 35,
+          "NK-DUMMY-008": 25,
+          "NK-DUMMY-009": 8,
+          "NK-DUMMY-010": 8,
+          "NK-DUMMY-011": 8,
+          "NK-DUMMY-012": 12,
+          "NK-DUMMY-013": 25,
+          "NK-DUMMY-014": 60,
+          "NK-DUMMY-015": 8,
+          "NK-DUMMY-016": 25,
+          "NK-DUMMY-017": 50,
+          "NK-DUMMY-018": 1,
+          "NK-DUMMY-019": 50,
+          "NK-DUMMY-020": 25,
+          "NK-DUMMY-021": 0,
+          "NK-DUMMY-022": 1,
+          "NK-DUMMY-023": 18,
+          "NK-DUMMY-024": 12,
+          "NK-DUMMY-025": 8,
+          "NK-DUMMY-026": 35,
+          "NK-DUMMY-027": 50,
+          "NK-DUMMY-028": 4,
+          "NK-DUMMY-029": 4,
+          "NK-DUMMY-030": 12,
+          "NK-DUMMY-031": 3,
+          "NK-DUMMY-032": 8,
+          "NK-DUMMY-033": 12,
+          "NK-DUMMY-034": 18,
+          "NK-DUMMY-035": 35,
+          "NK-DUMMY-036": 3,
+          "NK-DUMMY-037": 25,
+          "NK-DUMMY-038": 0,
+          "NK-DUMMY-039": 3,
+          "NK-DUMMY-040": 1,
+          "NK-DUMMY-041": 25,
+          "NK-DUMMY-042": 25,
+          "NK-DUMMY-043": 35,
+          "NK-DUMMY-044": 0,
+          "NK-DUMMY-045": 18,
+          "NK-DUMMY-046": 3,
+          "NK-DUMMY-047": 12,
+          "NK-DUMMY-048": 12,
+          "NK-DUMMY-049": 35,
+          "NK-DUMMY-050": 5,
+          "NK-DUMMY-051": 8,
+          "NK-DUMMY-052": 25,
+          "NK-DUMMY-053": 2,
+          "NK-DUMMY-054": 60,
+          "NK-DUMMY-055": 8,
+          "NK-DUMMY-056": 1,
+          "NK-DUMMY-057": 18,
+          "NK-DUMMY-058": 8,
+          "NK-DUMMY-059": 2,
+          "NK-DUMMY-060": 4,
+          "NK-DUMMY-061": 12,
+          "NK-DUMMY-062": 0,
+          "NK-DUMMY-063": 25,
+          "NK-DUMMY-064": 18,
+          "NK-DUMMY-065": 18,
+          "NK-DUMMY-066": 1,
+          "NK-DUMMY-067": 25,
+          "NK-DUMMY-068": 5,
+          "NK-DUMMY-069": 4,
+          "NK-DUMMY-070": 25,
+          "NK-DUMMY-071": 0,
+          "NK-DUMMY-072": 25,
+          "NK-DUMMY-073": 12,
+          "NK-DUMMY-074": 35,
+          "NK-DUMMY-075": 25,
+          "NK-DUMMY-076": 35,
+          "NK-DUMMY-077": 12,
+          "NK-DUMMY-078": 35,
+          "NK-DUMMY-079": 18,
+          "NK-DUMMY-080": 8,
+          "NK-DUMMY-081": 60,
+          "NK-DUMMY-082": 5,
+          "NK-DUMMY-083": 18,
+          "NK-DUMMY-084": 25,
+          "NK-DUMMY-085": 35,
+          "NK-DUMMY-086": 50,
+          "NK-DUMMY-087": 25,
+          "NK-DUMMY-088": 18,
+          "NK-DUMMY-089": 60,
+          "NK-DUMMY-090": 2,
+          "NK-DUMMY-091": 25,
+          "NK-DUMMY-092": 25,
+          "NK-DUMMY-093": 35,
+          "NK-DUMMY-094": 12,
+          "NK-DUMMY-095": 2,
+          "NK-DUMMY-096": 5,
+          "NK-DUMMY-097": 5,
+          "NK-DUMMY-098": 25,
+          "NK-DUMMY-099": 0,
+          "NK-DUMMY-100": 35,
+          "NK-DUMMY-101": 25,
+          "NK-DUMMY-102": 35,
+          "NK-DUMMY-103": 18,
+          "NK-DUMMY-104": 50,
+          "NK-DUMMY-105": 12,
+          "NK-DUMMY-106": 35,
+          "NK-DUMMY-107": 8,
+          "NK-DUMMY-108": 35,
+          "NK-DUMMY-109": 60,
+          "NK-DUMMY-110": 35,
+          "NK-DUMMY-111": 2,
+          "NK-DUMMY-112": 12,
+          "NK-DUMMY-113": 25,
+          "NK-DUMMY-114": 1,
+          "NK-DUMMY-115": 12,
+          "NK-DUMMY-116": 12,
+          "NK-DUMMY-117": 35,
+          "NK-DUMMY-118": 12,
+          "NK-DUMMY-119": 18,
+          "NK-DUMMY-120": 35
+        },
+        "final_stock_definition_dummy": "Current dummy stock per product from the catalogue file, not an end-of-period stock_end from sales.",
+        "findings_dummy": [
+          "Channel with most dummy units: Instagram (23254 units).",
+          "Product with most dummy units: Nike Air Max SC (Contoh) (3584 units).",
+          "Category with most dummy units: Sneakers (37346 units).",
+          "Low-stock sales rows (products with current stock <= 5): 21600 of 86400 rows."
+        ],
+        "recommendations_dummy": [
+          "Restock the dummy products that are at low stock before they hit zero (dummy signal only).",
+          "Focus restock checks on the channel and category with the highest dummy units, but confirm with real UMKM data before acting.",
+          "Keep one master inventory record so channel labels do not drift apart; do not add automatic sync in the prototype."
+        ]
+      },
+      "baseline_model": {
+        "data_label": "dummy",
+        "features": [
+          "price_dummy_idr",
+          "total_units",
+          "recent_30d_units"
+        ],
+        "target": "low_stock (current dummy stock <= 5, product level)",
+        "split": "stratified 80/20 split, random_state=42 (scaler fitted on train only); product-level snapshot, not a time-series forecast",
+        "train_rows": 96,
+        "test_rows": 24,
+        "test_positive_rate": 0.25,
+        "accuracy": 0.75,
+        "macro_f1": 0.4286,
+        "limitation": "Dummy data only, 120 products, product-level snapshot with no daily stock trajectory, so this baseline is a pipeline demo, not a forecast to act on. It is not comparable to the old weekly low_stock_next_week baseline."
+      },
+      "source_dir": "static demo (GitHub Pages)",
+      "data_label": "dummy"
+    },
+    "data_science_note": "Data Science dummy dari Nike dummy, dari demo statis GitHub Pages (bukan dari backend)."
+  },
+  "products": [
+    {
+      "id": "NK-DUMMY-001",
+      "name": "Nike Air Force 1 '07 (Contoh)",
+      "price": 1401000,
+      "stock": 25,
+      "availability": "tersedia",
+      "channels": [
+        "Facebook",
+        "Instagram"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-002",
+      "name": "Nike Air Max 90 (Contoh)",
+      "price": 1655000,
+      "stock": 18,
+      "availability": "tersedia",
+      "channels": [
+        "Instagram",
+        "Shopee"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-003",
+      "name": "Nike Air Max 270 (Contoh)",
+      "price": 1407000,
+      "stock": 18,
+      "availability": "tersedia",
+      "channels": [
+        "Shopee",
+        "Instagram",
+        "Facebook",
+        "Carousell"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-004",
+      "name": "Nike Dunk Low (Contoh)",
+      "price": 3030000,
+      "stock": 8,
+      "availability": "tersedia",
+      "channels": [
+        "Facebook",
+        "Shopee"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-005",
+      "name": "Nike Blazer Mid '77 (Contoh)",
+      "price": 2769000,
+      "stock": 35,
+      "availability": "tersedia",
+      "channels": [
+        "Carousell",
+        "Instagram",
+        "Facebook",
+        "Shopee"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-006",
+      "name": "Nike Cortez (Contoh)",
+      "price": 2780000,
+      "stock": 18,
+      "availability": "tersedia",
+      "channels": [
+        "Instagram",
+        "Carousell"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-007",
+      "name": "Nike Air Jordan 1 Mid (Contoh)",
+      "price": 2252000,
+      "stock": 35,
+      "availability": "tersedia",
+      "channels": [
+        "Carousell",
+        "Facebook",
+        "Shopee"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-008",
+      "name": "Nike Air Max 97 (Contoh)",
+      "price": 2392000,
+      "stock": 25,
+      "availability": "tersedia",
+      "channels": [
+        "Facebook",
+        "Carousell"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-009",
+      "name": "Nike Air Max SC (Contoh)",
+      "price": 2853000,
+      "stock": 8,
+      "availability": "tersedia",
+      "channels": [
+        "Facebook",
+        "Carousell",
+        "Shopee",
+        "Instagram"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-010",
+      "name": "Nike P-6000 (Contoh)",
+      "price": 2942000,
+      "stock": 8,
+      "availability": "tersedia",
+      "channels": [
+        "Carousell",
+        "Instagram"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-011",
+      "name": "Nike Air Max Pulse (Contoh)",
+      "price": 1884000,
+      "stock": 8,
+      "availability": "tersedia",
+      "channels": [
+        "Carousell",
+        "Shopee"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-012",
+      "name": "Nike Dunk High (Contoh)",
+      "price": 2934000,
+      "stock": 12,
+      "availability": "tersedia",
+      "channels": [
+        "Shopee",
+        "Instagram"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-013",
+      "name": "Nike Air Force 1 '07 (Contoh)",
+      "price": 1954000,
+      "stock": 25,
+      "availability": "tersedia",
+      "channels": [
+        "Instagram",
+        "Facebook",
+        "Carousell"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-014",
+      "name": "Nike Air Max 90 (Contoh)",
+      "price": 2328000,
+      "stock": 60,
+      "availability": "tersedia",
+      "channels": [
+        "Instagram",
+        "Carousell"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-015",
+      "name": "Nike Air Max 270 (Contoh)",
+      "price": 1755000,
+      "stock": 8,
+      "availability": "tersedia",
+      "channels": [
+        "Shopee",
+        "Instagram"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-016",
+      "name": "Nike Dunk Low (Contoh)",
+      "price": 3349000,
+      "stock": 25,
+      "availability": "tersedia",
+      "channels": [
+        "Instagram",
+        "Carousell",
+        "Facebook",
+        "Shopee"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-017",
+      "name": "Nike Blazer Mid '77 (Contoh)",
+      "price": 3471000,
+      "stock": 50,
+      "availability": "tersedia",
+      "channels": [
+        "Carousell",
+        "Facebook",
+        "Instagram",
+        "Shopee"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-018",
+      "name": "Nike Cortez (Contoh)",
+      "price": 2279000,
+      "stock": 1,
+      "availability": "menipis",
+      "channels": [
+        "Instagram",
+        "Shopee",
+        "Facebook",
+        "Carousell"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-019",
+      "name": "Nike Air Jordan 1 Mid (Contoh)",
+      "price": 3245000,
+      "stock": 50,
+      "availability": "tersedia",
+      "channels": [
+        "Carousell",
+        "Shopee"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-020",
+      "name": "Nike Air Max 97 (Contoh)",
+      "price": 2122000,
+      "stock": 25,
+      "availability": "tersedia",
+      "channels": [
+        "Carousell",
+        "Facebook",
+        "Shopee"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-021",
+      "name": "Nike Air Max SC (Contoh)",
+      "price": 2683000,
+      "stock": 0,
+      "availability": "habis",
+      "channels": [
+        "Facebook",
+        "Carousell",
+        "Instagram",
+        "Shopee"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-022",
+      "name": "Nike P-6000 (Contoh)",
+      "price": 2236000,
+      "stock": 1,
+      "availability": "menipis",
+      "channels": [
+        "Carousell",
+        "Instagram"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-023",
+      "name": "Nike Air Max Pulse (Contoh)",
+      "price": 2176000,
+      "stock": 18,
+      "availability": "tersedia",
+      "channels": [
+        "Shopee",
+        "Instagram",
+        "Facebook",
+        "Carousell"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-024",
+      "name": "Nike Dunk High (Contoh)",
+      "price": 2750000,
+      "stock": 12,
+      "availability": "tersedia",
+      "channels": [
+        "Instagram",
+        "Carousell",
+        "Shopee"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-025",
+      "name": "Nike Air Force 1 '07 (Contoh)",
+      "price": 1746000,
+      "stock": 8,
+      "availability": "tersedia",
+      "channels": [
+        "Shopee",
+        "Instagram"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-026",
+      "name": "Nike Air Max 90 (Contoh)",
+      "price": 2322000,
+      "stock": 35,
+      "availability": "tersedia",
+      "channels": [
+        "Shopee",
+        "Carousell"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-027",
+      "name": "Nike Air Max 270 (Contoh)",
+      "price": 1359000,
+      "stock": 50,
+      "availability": "tersedia",
+      "channels": [
+        "Facebook",
+        "Shopee"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-028",
+      "name": "Nike Dunk Low (Contoh)",
+      "price": 1539000,
+      "stock": 4,
+      "availability": "menipis",
+      "channels": [
+        "Shopee",
+        "Facebook"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-029",
+      "name": "Nike Blazer Mid '77 (Contoh)",
+      "price": 3292000,
+      "stock": 4,
+      "availability": "menipis",
+      "channels": [
+        "Facebook",
+        "Instagram",
+        "Carousell"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-030",
+      "name": "Nike Cortez (Contoh)",
+      "price": 3251000,
+      "stock": 12,
+      "availability": "tersedia",
+      "channels": [
+        "Facebook",
+        "Instagram",
+        "Carousell",
+        "Shopee"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-031",
+      "name": "Nike Air Jordan 1 Mid (Contoh)",
+      "price": 2952000,
+      "stock": 3,
+      "availability": "menipis",
+      "channels": [
+        "Facebook",
+        "Carousell",
+        "Instagram",
+        "Shopee"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-032",
+      "name": "Nike Air Max 97 (Contoh)",
+      "price": 3440000,
+      "stock": 8,
+      "availability": "tersedia",
+      "channels": [
+        "Facebook",
+        "Carousell",
+        "Shopee"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-033",
+      "name": "Nike Air Max SC (Contoh)",
+      "price": 2527000,
+      "stock": 12,
+      "availability": "tersedia",
+      "channels": [
+        "Instagram",
+        "Facebook"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-034",
+      "name": "Nike P-6000 (Contoh)",
+      "price": 1599000,
+      "stock": 18,
+      "availability": "tersedia",
+      "channels": [
+        "Carousell",
+        "Instagram",
+        "Facebook",
+        "Shopee"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-035",
+      "name": "Nike Air Max Pulse (Contoh)",
+      "price": 3093000,
+      "stock": 35,
+      "availability": "tersedia",
+      "channels": [
+        "Instagram",
+        "Carousell",
+        "Facebook"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-036",
+      "name": "Nike Dunk High (Contoh)",
+      "price": 2382000,
+      "stock": 3,
+      "availability": "menipis",
+      "channels": [
+        "Facebook",
+        "Shopee"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-037",
+      "name": "Nike Air Force 1 '07 (Contoh)",
+      "price": 2132000,
+      "stock": 25,
+      "availability": "tersedia",
+      "channels": [
+        "Shopee",
+        "Facebook",
+        "Instagram"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-038",
+      "name": "Nike Air Max 90 (Contoh)",
+      "price": 1479000,
+      "stock": 0,
+      "availability": "habis",
+      "channels": [
+        "Carousell",
+        "Instagram"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-039",
+      "name": "Nike Air Max 270 (Contoh)",
+      "price": 1338000,
+      "stock": 3,
+      "availability": "menipis",
+      "channels": [
+        "Instagram",
+        "Facebook"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-040",
+      "name": "Nike Dunk Low (Contoh)",
+      "price": 1821000,
+      "stock": 1,
+      "availability": "menipis",
+      "channels": [
+        "Instagram",
+        "Facebook",
+        "Shopee"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-041",
+      "name": "Nike Blazer Mid '77 (Contoh)",
+      "price": 2747000,
+      "stock": 25,
+      "availability": "tersedia",
+      "channels": [
+        "Facebook",
+        "Instagram",
+        "Carousell"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-042",
+      "name": "Nike Cortez (Contoh)",
+      "price": 2033000,
+      "stock": 25,
+      "availability": "tersedia",
+      "channels": [
+        "Shopee",
+        "Carousell",
+        "Instagram"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-043",
+      "name": "Nike Air Jordan 1 Mid (Contoh)",
+      "price": 2865000,
+      "stock": 35,
+      "availability": "tersedia",
+      "channels": [
+        "Facebook",
+        "Instagram",
+        "Shopee"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-044",
+      "name": "Nike Air Max 97 (Contoh)",
+      "price": 2212000,
+      "stock": 0,
+      "availability": "habis",
+      "channels": [
+        "Shopee",
+        "Facebook"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-045",
+      "name": "Nike Air Max SC (Contoh)",
+      "price": 2737000,
+      "stock": 18,
+      "availability": "tersedia",
+      "channels": [
+        "Carousell",
+        "Instagram",
+        "Shopee"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-046",
+      "name": "Nike P-6000 (Contoh)",
+      "price": 1455000,
+      "stock": 3,
+      "availability": "menipis",
+      "channels": [
+        "Carousell",
+        "Shopee",
+        "Facebook"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-047",
+      "name": "Nike Air Max Pulse (Contoh)",
+      "price": 1772000,
+      "stock": 12,
+      "availability": "tersedia",
+      "channels": [
+        "Facebook",
+        "Shopee",
+        "Instagram",
+        "Carousell"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-048",
+      "name": "Nike Dunk High (Contoh)",
+      "price": 2106000,
+      "stock": 12,
+      "availability": "tersedia",
+      "channels": [
+        "Carousell",
+        "Shopee"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-049",
+      "name": "Nike Pegasus 41 (Contoh)",
+      "price": 2973000,
+      "stock": 35,
+      "availability": "tersedia",
+      "channels": [
+        "Carousell",
+        "Shopee",
+        "Facebook",
+        "Instagram"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-050",
+      "name": "Nike Pegasus 40 (Contoh)",
+      "price": 1759000,
+      "stock": 5,
+      "availability": "menipis",
+      "channels": [
+        "Facebook",
+        "Carousell",
+        "Shopee"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-051",
+      "name": "Nike Vomero 17 (Contoh)",
+      "price": 2121000,
+      "stock": 8,
+      "availability": "tersedia",
+      "channels": [
+        "Carousell",
+        "Facebook",
+        "Shopee"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-052",
+      "name": "Nike Invincible 3 (Contoh)",
+      "price": 2468000,
+      "stock": 25,
+      "availability": "tersedia",
+      "channels": [
+        "Instagram",
+        "Facebook"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-053",
+      "name": "Nike Structure 25 (Contoh)",
+      "price": 2185000,
+      "stock": 2,
+      "availability": "menipis",
+      "channels": [
+        "Carousell",
+        "Instagram"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-054",
+      "name": "Nike Winflo 11 (Contoh)",
+      "price": 2000000,
+      "stock": 60,
+      "availability": "tersedia",
+      "channels": [
+        "Instagram",
+        "Facebook",
+        "Carousell",
+        "Shopee"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-055",
+      "name": "Nike React Infinity 4 (Contoh)",
+      "price": 2317000,
+      "stock": 8,
+      "availability": "tersedia",
+      "channels": [
+        "Instagram",
+        "Facebook"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-056",
+      "name": "Nike Zoom Fly 5 (Contoh)",
+      "price": 2450000,
+      "stock": 1,
+      "availability": "menipis",
+      "channels": [
+        "Instagram",
+        "Facebook"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-057",
+      "name": "Nike Streakfly (Contoh)",
+      "price": 2643000,
+      "stock": 18,
+      "availability": "tersedia",
+      "channels": [
+        "Shopee",
+        "Carousell",
+        "Facebook"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-058",
+      "name": "Nike Alphafly 3 (Contoh)",
+      "price": 2420000,
+      "stock": 8,
+      "availability": "tersedia",
+      "channels": [
+        "Carousell",
+        "Shopee"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-059",
+      "name": "Nike Pegasus 41 (Contoh)",
+      "price": 2399000,
+      "stock": 2,
+      "availability": "menipis",
+      "channels": [
+        "Facebook",
+        "Shopee",
+        "Carousell"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-060",
+      "name": "Nike Pegasus 40 (Contoh)",
+      "price": 1782000,
+      "stock": 4,
+      "availability": "menipis",
+      "channels": [
+        "Facebook",
+        "Carousell",
+        "Instagram"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-061",
+      "name": "Nike Vomero 17 (Contoh)",
+      "price": 2610000,
+      "stock": 12,
+      "availability": "tersedia",
+      "channels": [
+        "Facebook",
+        "Shopee"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-062",
+      "name": "Nike Invincible 3 (Contoh)",
+      "price": 2923000,
+      "stock": 0,
+      "availability": "habis",
+      "channels": [
+        "Shopee",
+        "Facebook",
+        "Instagram",
+        "Carousell"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-063",
+      "name": "Nike Structure 25 (Contoh)",
+      "price": 2601000,
+      "stock": 25,
+      "availability": "tersedia",
+      "channels": [
+        "Facebook",
+        "Shopee",
+        "Instagram",
+        "Carousell"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-064",
+      "name": "Nike Winflo 11 (Contoh)",
+      "price": 2187000,
+      "stock": 18,
+      "availability": "tersedia",
+      "channels": [
+        "Facebook",
+        "Shopee",
+        "Instagram"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-065",
+      "name": "Nike React Infinity 4 (Contoh)",
+      "price": 2711000,
+      "stock": 18,
+      "availability": "tersedia",
+      "channels": [
+        "Instagram",
+        "Carousell"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-066",
+      "name": "Nike Zoom Fly 5 (Contoh)",
+      "price": 1871000,
+      "stock": 1,
+      "availability": "menipis",
+      "channels": [
+        "Carousell",
+        "Instagram",
+        "Facebook"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-067",
+      "name": "Nike Streakfly (Contoh)",
+      "price": 2068000,
+      "stock": 25,
+      "availability": "tersedia",
+      "channels": [
+        "Carousell",
+        "Instagram",
+        "Facebook"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-068",
+      "name": "Nike Alphafly 3 (Contoh)",
+      "price": 2215000,
+      "stock": 5,
+      "availability": "menipis",
+      "channels": [
+        "Instagram",
+        "Shopee"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-069",
+      "name": "Nike Pegasus 41 (Contoh)",
+      "price": 2771000,
+      "stock": 4,
+      "availability": "menipis",
+      "channels": [
+        "Shopee",
+        "Carousell"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-070",
+      "name": "Nike Pegasus 40 (Contoh)",
+      "price": 2451000,
+      "stock": 25,
+      "availability": "tersedia",
+      "channels": [
+        "Facebook",
+        "Carousell",
+        "Instagram"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-071",
+      "name": "Nike Vomero 17 (Contoh)",
+      "price": 2684000,
+      "stock": 0,
+      "availability": "habis",
+      "channels": [
+        "Shopee",
+        "Facebook",
+        "Instagram"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-072",
+      "name": "Nike Invincible 3 (Contoh)",
+      "price": 1707000,
+      "stock": 25,
+      "availability": "tersedia",
+      "channels": [
+        "Instagram",
+        "Carousell",
+        "Shopee"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-073",
+      "name": "Nike Structure 25 (Contoh)",
+      "price": 1640000,
+      "stock": 12,
+      "availability": "tersedia",
+      "channels": [
+        "Instagram",
+        "Facebook",
+        "Carousell"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-074",
+      "name": "Nike Winflo 11 (Contoh)",
+      "price": 2800000,
+      "stock": 35,
+      "availability": "tersedia",
+      "channels": [
+        "Facebook",
+        "Shopee",
+        "Instagram"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-075",
+      "name": "Nike React Infinity 4 (Contoh)",
+      "price": 2760000,
+      "stock": 25,
+      "availability": "tersedia",
+      "channels": [
+        "Shopee",
+        "Facebook",
+        "Carousell",
+        "Instagram"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-076",
+      "name": "Nike Zoom Fly 5 (Contoh)",
+      "price": 2070000,
+      "stock": 35,
+      "availability": "tersedia",
+      "channels": [
+        "Shopee",
+        "Carousell"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-077",
+      "name": "Nike Streakfly (Contoh)",
+      "price": 1557000,
+      "stock": 12,
+      "availability": "tersedia",
+      "channels": [
+        "Facebook",
+        "Shopee",
+        "Instagram"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-078",
+      "name": "Nike Alphafly 3 (Contoh)",
+      "price": 2071000,
+      "stock": 35,
+      "availability": "tersedia",
+      "channels": [
+        "Instagram",
+        "Carousell",
+        "Shopee"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-079",
+      "name": "Nike Pegasus Trail 5 (Contoh)",
+      "price": 2799000,
+      "stock": 18,
+      "availability": "tersedia",
+      "channels": [
+        "Shopee",
+        "Carousell"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-080",
+      "name": "Nike Terra Kiger 10 (Contoh)",
+      "price": 1989000,
+      "stock": 8,
+      "availability": "tersedia",
+      "channels": [
+        "Facebook",
+        "Shopee",
+        "Carousell"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-081",
+      "name": "Nike Zegama 2 (Contoh)",
+      "price": 2670000,
+      "stock": 60,
+      "availability": "tersedia",
+      "channels": [
+        "Carousell",
+        "Facebook",
+        "Shopee",
+        "Instagram"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-082",
+      "name": "Nike Wildhorse 9 (Contoh)",
+      "price": 3276000,
+      "stock": 5,
+      "availability": "menipis",
+      "channels": [
+        "Facebook",
+        "Instagram"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-083",
+      "name": "Nike Ultrafly (Contoh)",
+      "price": 3282000,
+      "stock": 18,
+      "availability": "tersedia",
+      "channels": [
+        "Carousell",
+        "Instagram",
+        "Shopee",
+        "Facebook"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-084",
+      "name": "Nike Trail 4 (Contoh)",
+      "price": 1827000,
+      "stock": 25,
+      "availability": "tersedia",
+      "channels": [
+        "Carousell",
+        "Instagram"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-085",
+      "name": "Nike Juniper Trail 3 (Contoh)",
+      "price": 3105000,
+      "stock": 35,
+      "availability": "tersedia",
+      "channels": [
+        "Instagram",
+        "Shopee",
+        "Facebook"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-086",
+      "name": "Nike Pegasus Trail 5 (Contoh)",
+      "price": 2176000,
+      "stock": 50,
+      "availability": "tersedia",
+      "channels": [
+        "Shopee",
+        "Instagram",
+        "Carousell"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-087",
+      "name": "Nike Terra Kiger 10 (Contoh)",
+      "price": 3088000,
+      "stock": 25,
+      "availability": "tersedia",
+      "channels": [
+        "Facebook",
+        "Carousell"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-088",
+      "name": "Nike Zegama 2 (Contoh)",
+      "price": 2041000,
+      "stock": 18,
+      "availability": "tersedia",
+      "channels": [
+        "Facebook",
+        "Carousell",
+        "Shopee"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-089",
+      "name": "Nike Wildhorse 9 (Contoh)",
+      "price": 3004000,
+      "stock": 60,
+      "availability": "tersedia",
+      "channels": [
+        "Instagram",
+        "Carousell",
+        "Shopee"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-090",
+      "name": "Nike Ultrafly (Contoh)",
+      "price": 3151000,
+      "stock": 2,
+      "availability": "menipis",
+      "channels": [
+        "Facebook",
+        "Carousell"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-091",
+      "name": "Nike Trail 4 (Contoh)",
+      "price": 2721000,
+      "stock": 25,
+      "availability": "tersedia",
+      "channels": [
+        "Carousell",
+        "Instagram",
+        "Shopee"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-092",
+      "name": "Nike Juniper Trail 3 (Contoh)",
+      "price": 1944000,
+      "stock": 25,
+      "availability": "tersedia",
+      "channels": [
+        "Facebook",
+        "Shopee",
+        "Instagram"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-093",
+      "name": "Nike Pegasus Trail 5 (Contoh)",
+      "price": 2343000,
+      "stock": 35,
+      "availability": "tersedia",
+      "channels": [
+        "Instagram",
+        "Shopee"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-094",
+      "name": "Nike Terra Kiger 10 (Contoh)",
+      "price": 2390000,
+      "stock": 12,
+      "availability": "tersedia",
+      "channels": [
+        "Carousell",
+        "Shopee",
+        "Facebook"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-095",
+      "name": "Nike Zegama 2 (Contoh)",
+      "price": 2695000,
+      "stock": 2,
+      "availability": "menipis",
+      "channels": [
+        "Shopee",
+        "Carousell"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-096",
+      "name": "Nike Wildhorse 9 (Contoh)",
+      "price": 1986000,
+      "stock": 5,
+      "availability": "menipis",
+      "channels": [
+        "Instagram",
+        "Carousell",
+        "Facebook",
+        "Shopee"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-097",
+      "name": "Nike Calm Slide (Contoh)",
+      "price": 783000,
+      "stock": 5,
+      "availability": "menipis",
+      "channels": [
+        "Shopee",
+        "Carousell",
+        "Facebook",
+        "Instagram"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-098",
+      "name": "Nike Offcourt Slide (Contoh)",
+      "price": 827000,
+      "stock": 25,
+      "availability": "tersedia",
+      "channels": [
+        "Carousell",
+        "Facebook"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-099",
+      "name": "Nike Victori One Slide (Contoh)",
+      "price": 1062000,
+      "stock": 0,
+      "availability": "habis",
+      "channels": [
+        "Carousell",
+        "Facebook"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-100",
+      "name": "Nike Calm Mule (Contoh)",
+      "price": 1025000,
+      "stock": 35,
+      "availability": "tersedia",
+      "channels": [
+        "Shopee",
+        "Facebook"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-101",
+      "name": "Nike Calm Sandal (Contoh)",
+      "price": 1136000,
+      "stock": 25,
+      "availability": "tersedia",
+      "channels": [
+        "Instagram",
+        "Shopee",
+        "Facebook"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-102",
+      "name": "Nike Asuna 2 Slide (Contoh)",
+      "price": 947000,
+      "stock": 35,
+      "availability": "tersedia",
+      "channels": [
+        "Instagram",
+        "Shopee",
+        "Carousell"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-103",
+      "name": "Nike Calm Slide (Contoh)",
+      "price": 513000,
+      "stock": 18,
+      "availability": "tersedia",
+      "channels": [
+        "Facebook",
+        "Instagram"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-104",
+      "name": "Nike Offcourt Slide (Contoh)",
+      "price": 1009000,
+      "stock": 50,
+      "availability": "tersedia",
+      "channels": [
+        "Carousell",
+        "Facebook",
+        "Shopee"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-105",
+      "name": "Nike Victori One Slide (Contoh)",
+      "price": 647000,
+      "stock": 12,
+      "availability": "tersedia",
+      "channels": [
+        "Facebook",
+        "Instagram",
+        "Shopee",
+        "Carousell"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-106",
+      "name": "Nike Calm Mule (Contoh)",
+      "price": 772000,
+      "stock": 35,
+      "availability": "tersedia",
+      "channels": [
+        "Carousell",
+        "Shopee",
+        "Facebook"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-107",
+      "name": "Nike Calm Sandal (Contoh)",
+      "price": 852000,
+      "stock": 8,
+      "availability": "tersedia",
+      "channels": [
+        "Shopee",
+        "Facebook",
+        "Carousell",
+        "Instagram"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-108",
+      "name": "Nike Asuna 2 Slide (Contoh)",
+      "price": 738000,
+      "stock": 35,
+      "availability": "tersedia",
+      "channels": [
+        "Instagram",
+        "Facebook",
+        "Carousell"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-109",
+      "name": "Nike G.T. Cut 3 (Contoh)",
+      "price": 3380000,
+      "stock": 60,
+      "availability": "tersedia",
+      "channels": [
+        "Shopee",
+        "Instagram"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-110",
+      "name": "Nike Ja 3 (Contoh)",
+      "price": 3158000,
+      "stock": 35,
+      "availability": "tersedia",
+      "channels": [
+        "Instagram",
+        "Carousell",
+        "Facebook"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-111",
+      "name": "Nike Sabrina 3 (Contoh)",
+      "price": 2431000,
+      "stock": 2,
+      "availability": "menipis",
+      "channels": [
+        "Carousell",
+        "Shopee",
+        "Facebook"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-112",
+      "name": "Nike LeBron 22 (Contoh)",
+      "price": 3984000,
+      "stock": 12,
+      "availability": "tersedia",
+      "channels": [
+        "Shopee",
+        "Carousell",
+        "Instagram"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-113",
+      "name": "Nike KD 17 (Contoh)",
+      "price": 2730000,
+      "stock": 25,
+      "availability": "tersedia",
+      "channels": [
+        "Instagram",
+        "Carousell",
+        "Shopee"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-114",
+      "name": "Nike Book 1 (Contoh)",
+      "price": 1917000,
+      "stock": 1,
+      "availability": "menipis",
+      "channels": [
+        "Carousell",
+        "Facebook"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-115",
+      "name": "Nike Metcon 9 (Contoh)",
+      "price": 2386000,
+      "stock": 12,
+      "availability": "tersedia",
+      "channels": [
+        "Facebook",
+        "Instagram"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-116",
+      "name": "Nike Free Metcon 6 (Contoh)",
+      "price": 1792000,
+      "stock": 12,
+      "availability": "tersedia",
+      "channels": [
+        "Facebook",
+        "Instagram",
+        "Shopee",
+        "Carousell"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-117",
+      "name": "Nike SuperRep Go 3 (Contoh)",
+      "price": 2251000,
+      "stock": 35,
+      "availability": "tersedia",
+      "channels": [
+        "Facebook",
+        "Instagram",
+        "Shopee",
+        "Carousell"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-118",
+      "name": "Nike Zoom Metcon (Contoh)",
+      "price": 1811000,
+      "stock": 12,
+      "availability": "tersedia",
+      "channels": [
+        "Facebook",
+        "Shopee",
+        "Carousell"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-119",
+      "name": "Nike MC Trainer 3 (Contoh)",
+      "price": 2034000,
+      "stock": 18,
+      "availability": "tersedia",
+      "channels": [
+        "Instagram",
+        "Carousell",
+        "Facebook"
+      ],
+      "data_label": "dummy"
+    },
+    {
+      "id": "NK-DUMMY-120",
+      "name": "Nike Flex Experience 12 (Contoh)",
+      "price": 2316000,
+      "stock": 35,
+      "availability": "tersedia",
+      "channels": [
+        "Facebook",
+        "Carousell",
+        "Shopee"
+      ],
+      "data_label": "dummy"
+    }
+  ],
+  "movements": [
+    {
+      "id": "MOV-NK-DUMMY-001",
+      "product_id": "NK-DUMMY-001",
+      "quantity": 25,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-002",
+      "product_id": "NK-DUMMY-002",
+      "quantity": 18,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-003",
+      "product_id": "NK-DUMMY-003",
+      "quantity": 18,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-004",
+      "product_id": "NK-DUMMY-004",
+      "quantity": 8,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-005",
+      "product_id": "NK-DUMMY-005",
+      "quantity": 35,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-006",
+      "product_id": "NK-DUMMY-006",
+      "quantity": 18,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-007",
+      "product_id": "NK-DUMMY-007",
+      "quantity": 35,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-008",
+      "product_id": "NK-DUMMY-008",
+      "quantity": 25,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-009",
+      "product_id": "NK-DUMMY-009",
+      "quantity": 8,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-010",
+      "product_id": "NK-DUMMY-010",
+      "quantity": 8,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-011",
+      "product_id": "NK-DUMMY-011",
+      "quantity": 8,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-012",
+      "product_id": "NK-DUMMY-012",
+      "quantity": 12,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-013",
+      "product_id": "NK-DUMMY-013",
+      "quantity": 25,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-014",
+      "product_id": "NK-DUMMY-014",
+      "quantity": 60,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-015",
+      "product_id": "NK-DUMMY-015",
+      "quantity": 8,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-016",
+      "product_id": "NK-DUMMY-016",
+      "quantity": 25,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-017",
+      "product_id": "NK-DUMMY-017",
+      "quantity": 50,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-018",
+      "product_id": "NK-DUMMY-018",
+      "quantity": 1,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-019",
+      "product_id": "NK-DUMMY-019",
+      "quantity": 50,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-020",
+      "product_id": "NK-DUMMY-020",
+      "quantity": 25,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-022",
+      "product_id": "NK-DUMMY-022",
+      "quantity": 1,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-023",
+      "product_id": "NK-DUMMY-023",
+      "quantity": 18,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-024",
+      "product_id": "NK-DUMMY-024",
+      "quantity": 12,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-025",
+      "product_id": "NK-DUMMY-025",
+      "quantity": 8,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-026",
+      "product_id": "NK-DUMMY-026",
+      "quantity": 35,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-027",
+      "product_id": "NK-DUMMY-027",
+      "quantity": 50,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-028",
+      "product_id": "NK-DUMMY-028",
+      "quantity": 4,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-029",
+      "product_id": "NK-DUMMY-029",
+      "quantity": 4,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-030",
+      "product_id": "NK-DUMMY-030",
+      "quantity": 12,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-031",
+      "product_id": "NK-DUMMY-031",
+      "quantity": 3,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-032",
+      "product_id": "NK-DUMMY-032",
+      "quantity": 8,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-033",
+      "product_id": "NK-DUMMY-033",
+      "quantity": 12,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-034",
+      "product_id": "NK-DUMMY-034",
+      "quantity": 18,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-035",
+      "product_id": "NK-DUMMY-035",
+      "quantity": 35,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-036",
+      "product_id": "NK-DUMMY-036",
+      "quantity": 3,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-037",
+      "product_id": "NK-DUMMY-037",
+      "quantity": 25,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-039",
+      "product_id": "NK-DUMMY-039",
+      "quantity": 3,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-040",
+      "product_id": "NK-DUMMY-040",
+      "quantity": 1,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-041",
+      "product_id": "NK-DUMMY-041",
+      "quantity": 25,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-042",
+      "product_id": "NK-DUMMY-042",
+      "quantity": 25,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-043",
+      "product_id": "NK-DUMMY-043",
+      "quantity": 35,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-045",
+      "product_id": "NK-DUMMY-045",
+      "quantity": 18,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-046",
+      "product_id": "NK-DUMMY-046",
+      "quantity": 3,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-047",
+      "product_id": "NK-DUMMY-047",
+      "quantity": 12,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-048",
+      "product_id": "NK-DUMMY-048",
+      "quantity": 12,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-049",
+      "product_id": "NK-DUMMY-049",
+      "quantity": 35,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-050",
+      "product_id": "NK-DUMMY-050",
+      "quantity": 5,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-051",
+      "product_id": "NK-DUMMY-051",
+      "quantity": 8,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-052",
+      "product_id": "NK-DUMMY-052",
+      "quantity": 25,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-053",
+      "product_id": "NK-DUMMY-053",
+      "quantity": 2,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-054",
+      "product_id": "NK-DUMMY-054",
+      "quantity": 60,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-055",
+      "product_id": "NK-DUMMY-055",
+      "quantity": 8,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-056",
+      "product_id": "NK-DUMMY-056",
+      "quantity": 1,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-057",
+      "product_id": "NK-DUMMY-057",
+      "quantity": 18,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-058",
+      "product_id": "NK-DUMMY-058",
+      "quantity": 8,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-059",
+      "product_id": "NK-DUMMY-059",
+      "quantity": 2,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-060",
+      "product_id": "NK-DUMMY-060",
+      "quantity": 4,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-061",
+      "product_id": "NK-DUMMY-061",
+      "quantity": 12,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-063",
+      "product_id": "NK-DUMMY-063",
+      "quantity": 25,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-064",
+      "product_id": "NK-DUMMY-064",
+      "quantity": 18,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-065",
+      "product_id": "NK-DUMMY-065",
+      "quantity": 18,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-066",
+      "product_id": "NK-DUMMY-066",
+      "quantity": 1,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-067",
+      "product_id": "NK-DUMMY-067",
+      "quantity": 25,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-068",
+      "product_id": "NK-DUMMY-068",
+      "quantity": 5,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-069",
+      "product_id": "NK-DUMMY-069",
+      "quantity": 4,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-070",
+      "product_id": "NK-DUMMY-070",
+      "quantity": 25,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-072",
+      "product_id": "NK-DUMMY-072",
+      "quantity": 25,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-073",
+      "product_id": "NK-DUMMY-073",
+      "quantity": 12,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-074",
+      "product_id": "NK-DUMMY-074",
+      "quantity": 35,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-075",
+      "product_id": "NK-DUMMY-075",
+      "quantity": 25,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-076",
+      "product_id": "NK-DUMMY-076",
+      "quantity": 35,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-077",
+      "product_id": "NK-DUMMY-077",
+      "quantity": 12,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-078",
+      "product_id": "NK-DUMMY-078",
+      "quantity": 35,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-079",
+      "product_id": "NK-DUMMY-079",
+      "quantity": 18,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-080",
+      "product_id": "NK-DUMMY-080",
+      "quantity": 8,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-081",
+      "product_id": "NK-DUMMY-081",
+      "quantity": 60,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-082",
+      "product_id": "NK-DUMMY-082",
+      "quantity": 5,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-083",
+      "product_id": "NK-DUMMY-083",
+      "quantity": 18,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-084",
+      "product_id": "NK-DUMMY-084",
+      "quantity": 25,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-085",
+      "product_id": "NK-DUMMY-085",
+      "quantity": 35,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-086",
+      "product_id": "NK-DUMMY-086",
+      "quantity": 50,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-087",
+      "product_id": "NK-DUMMY-087",
+      "quantity": 25,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-088",
+      "product_id": "NK-DUMMY-088",
+      "quantity": 18,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-089",
+      "product_id": "NK-DUMMY-089",
+      "quantity": 60,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-090",
+      "product_id": "NK-DUMMY-090",
+      "quantity": 2,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-091",
+      "product_id": "NK-DUMMY-091",
+      "quantity": 25,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-092",
+      "product_id": "NK-DUMMY-092",
+      "quantity": 25,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-093",
+      "product_id": "NK-DUMMY-093",
+      "quantity": 35,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-094",
+      "product_id": "NK-DUMMY-094",
+      "quantity": 12,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-095",
+      "product_id": "NK-DUMMY-095",
+      "quantity": 2,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-096",
+      "product_id": "NK-DUMMY-096",
+      "quantity": 5,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-097",
+      "product_id": "NK-DUMMY-097",
+      "quantity": 5,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-098",
+      "product_id": "NK-DUMMY-098",
+      "quantity": 25,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-100",
+      "product_id": "NK-DUMMY-100",
+      "quantity": 35,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-101",
+      "product_id": "NK-DUMMY-101",
+      "quantity": 25,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-102",
+      "product_id": "NK-DUMMY-102",
+      "quantity": 35,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-103",
+      "product_id": "NK-DUMMY-103",
+      "quantity": 18,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-104",
+      "product_id": "NK-DUMMY-104",
+      "quantity": 50,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-105",
+      "product_id": "NK-DUMMY-105",
+      "quantity": 12,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-106",
+      "product_id": "NK-DUMMY-106",
+      "quantity": 35,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-107",
+      "product_id": "NK-DUMMY-107",
+      "quantity": 8,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-108",
+      "product_id": "NK-DUMMY-108",
+      "quantity": 35,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-109",
+      "product_id": "NK-DUMMY-109",
+      "quantity": 60,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-110",
+      "product_id": "NK-DUMMY-110",
+      "quantity": 35,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-111",
+      "product_id": "NK-DUMMY-111",
+      "quantity": 2,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-112",
+      "product_id": "NK-DUMMY-112",
+      "quantity": 12,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-113",
+      "product_id": "NK-DUMMY-113",
+      "quantity": 25,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-114",
+      "product_id": "NK-DUMMY-114",
+      "quantity": 1,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-115",
+      "product_id": "NK-DUMMY-115",
+      "quantity": 12,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-116",
+      "product_id": "NK-DUMMY-116",
+      "quantity": 12,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-117",
+      "product_id": "NK-DUMMY-117",
+      "quantity": 35,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-118",
+      "product_id": "NK-DUMMY-118",
+      "quantity": 12,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-119",
+      "product_id": "NK-DUMMY-119",
+      "quantity": 18,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    },
+    {
+      "id": "MOV-NK-DUMMY-120",
+      "product_id": "NK-DUMMY-120",
+      "quantity": 35,
+      "type": "in",
+      "note": "Stok awal contoh",
+      "created_at": "2026-10-25T00:00:00.000Z"
+    }
+  ],
+  "note": "Static demo data for GitHub Pages only. Same Nike dummy catalogue as backend/data/inventory.json and the Data Science Nike dummy outputs. Read-only: stock updates and AI chat still need the backend."
+}
