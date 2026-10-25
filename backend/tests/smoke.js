@@ -5,6 +5,7 @@ Gen AI proxy test is skipped gracefully if the gen-ai service is down:
 the proxy must return a clear 502, not crash.
 */
 const app = require("../server.js");
+const { loadDsOutputs } = require("../src/ds_outputs");
 
 const PORT = 3101;
 
@@ -47,6 +48,31 @@ async function main() {
     r = await fetch(`${base}/api/v1/insights`);
     const insights = (await r.json()).data;
     check("GET /api/v1/insights returns totals", typeof insights.total_products === "number");
+
+    // Phase 1: Data Science section served from the DS outputs files.
+    check(
+      "GET /api/v1/insights includes data_science section (dummy)",
+      insights.data_science !== null &&
+        typeof insights.data_science.business_summary.total_units_sold_dummy === "number" &&
+        typeof insights.data_science.baseline_model.accuracy === "number" &&
+        insights.data_science.data_label === "dummy" &&
+        insights.data_science.business_summary.data_label === "dummy" &&
+        insights.data_science.baseline_model.data_label === "dummy"
+    );
+    check(
+      "GET /api/v1/insights data_science totals match dummy outputs",
+      insights.data_science.business_summary.total_units_sold_dummy === 633 &&
+        insights.data_science.business_summary.total_revenue_dummy_idr === 203667000
+    );
+
+    // Missing-files fallback: loader must not throw and must report nulls.
+    const missing = loadDsOutputs("/tmp/does-not-exist-phase1-ds-outputs");
+    check(
+      "DS loader returns available=false with null outputs for a missing directory (no crash)",
+      missing.available === false &&
+        missing.business_summary === null &&
+        missing.baseline_model === null
+    );
 
     r = await fetch(`${base}/api/v1/ai/chat`, {
       method: "POST",

@@ -3,6 +3,24 @@
 Prototype only. By Ade Bintang. All data is dummy. No real UMKM data,
 no customer data, no passwords, no automatic platform sync.
 
+## Phase 1 (2026-10-25): what changed
+
+- `GET /api/v1/insights` now includes a `data_science` section read
+  from `data-science/outputs/business_summary.json` and
+  `baseline_model.json` (loader: `backend/src/ds_outputs.js`).
+  Directory is set by `DS_OUTPUTS_DIR` (default
+  `../../data-science/outputs` from `fullstack/backend`). If the
+  files are missing, the endpoint returns inventory-only insights
+  with `data_science: null` and a clear note, and never crashes.
+- The frontend business summary page now displays the Data Science
+  totals, units by channel, low-stock summary, and baseline model
+  metrics, all labelled dummy (or the missing-outputs note when
+  `data_science` is null).
+- Smoke tests extended to 11/11 pass (8 original + 3 new Phase 1
+  checks: DS section present and labelled dummy, DS totals match
+  the dummy outputs, and the missing-directory loader fallback).
+- Phase 1 changes are local only and have NOT been pushed yet.
+
 ## What this repo covers
 
 A decoupled Full-Stack prototype for centralized inventory:
@@ -44,13 +62,17 @@ npm run smoke      # smoke tests (verified: 8/8 pass, see below)
   `backend/data/ai_history.json` (message, intent, route, answer,
   timestamp only; no customer data).
 - Business insights: `GET /api/v1/insights` computes totals and
-  low-stock counts from the dummy inventory. Data Science dashboard
-  outputs are integrated at this endpoint in the final version.
+  low-stock counts from the dummy inventory AND (Phase 1) serves
+  the Data Science outputs in its `data_science` section (see
+  Phase 1 above and `API_CONTRACT.md`). The Streamlit dashboard
+  embed in the web app is still open work.
 
 Smoke test results (verified by running `npm run smoke`):
-8/8 pass: health, product list, product detail, unknown product 404,
-invalid product 400, stock-below-zero 400, insights, AI chat
-200-or-clear-502.
+11/11 pass in Phase 1: health, product list, product detail,
+unknown product 404, invalid product 400, stock-below-zero 400,
+insights totals, insights data_science section (dummy), insights
+DS totals match dummy outputs, DS missing-directory fallback
+(no crash), AI chat 200-or-clear-502.
 
 ## Frontend
 
@@ -66,6 +88,9 @@ npm run build     # production build
   Vite proxy; otherwise `/api` is proxied to `http://localhost:3001`.
 - Responsive: product cards stack on phones, 2 columns on tablets,
   3 columns on desktops (see `frontend/src/style.css`).
+- Phase 1 summary page: shows Data Science totals, units by
+  channel, low-stock summary, and baseline model metrics, all
+  labelled dummy.
 - Design decisions (not just a generic template): dark header with a
   visible "(Data Contoh)" label on every page, availability badges
   (tersedia / menipis / habis), channel shown explicitly as a label
@@ -77,12 +102,17 @@ npm run build     # production build
 - Frontend: Netlify or Cloudflare Pages (free tier).
 - Backend: Render (free tier).
 - Database (production): Neon (free tier, Postgres).
-- The prototype runs locally only; nothing in this repo is deployed,
-  and no GitHub repo was created by this build (Ade creates repos
-  manually, as with CV Lens AI).
+- The prototype runs locally only; nothing in this repo is deployed
+  in Phase 1, and Phase 1 was not pushed to GitHub (the main agent
+  pushes after verification). Whether to deploy at all, or demo
+  locally only, is still an open team decision.
 
 ## API contract
 
 See `API_CONTRACT.md` in this folder (same contract in gen-ai/ and
 data-science/). Endpoints, request/response formats, and error codes
 are agreed across the three repos before integration.
+
+## Disclaimer
+
+See CHECKLIST_STATUS.md in this repo. Phase 1 is not the final version. The final target is to match the Authenkixx use-case document and fulfil all Main Quest checklist items for Full-Stack, Gen AI, and Data Science. Phase 1 does not yet claim full checklist compliance.

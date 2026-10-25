@@ -128,12 +128,41 @@ async function renderInsights() {
   try {
     const d = await getInsights();
     setStatus(status, "success", "Ringkasan berhasil dimuat.");
+    // Phase 1: Data Science section, served by GET /api/v1/insights
+    // from the Data Science dummy outputs. Every figure is labelled
+    // dummy; when the outputs are missing the backend returns
+    // data_science: null and a note, shown below instead of crashing.
+    let dsHtml = `<p class="text-sm mt-2">${d.data_science_note || "Bagian Data Science tidak tersedia."}</p>`;
+    if (d.data_science) {
+      const s = d.data_science.business_summary;
+      const m = d.data_science.baseline_model;
+      const byChannel = Object.entries(s.units_by_channel_dummy || {})
+        .map(([channel, units]) => `<li>${channel}: ${units} unit dummy</li>`)
+        .join("");
+      const finalStock = Object.entries(s.final_stock_dummy || {})
+        .map(([id, stock]) => `<li>${id}: stok akhir dummy ${stock}</li>`)
+        .join("");
+      dsHtml = `
+        <h3 class="font-semibold mt-4">Analisis Data Science (Data Dummy)</h3>
+        <p>Total unit dummy terjual: ${s.total_units_sold_dummy}</p>
+        <p>Total revenue dummy: Rp ${(s.total_revenue_dummy_idr || 0).toLocaleString("id-ID")}</p>
+        <p>Baris stok menipis dummy (stock_end &lt;= 5): ${s.low_stock_rows_dummy} dari ${s.rows} baris</p>
+        <h4 class="font-semibold mt-3">Unit dummy per kanal</h4>
+        <ul class="text-sm mt-1">${byChannel}</ul>
+        <h4 class="font-semibold mt-3">Stok akhir dummy</h4>
+        <ul class="text-sm mt-1">${finalStock}</ul>
+        <h3 class="font-semibold mt-4">Model baseline low-stock (Data Dummy)</h3>
+        <p>Accuracy test dummy: ${m.accuracy} | Macro F1 test dummy: ${m.macro_f1}</p>
+        <p class="text-sm">Split: ${m.split} | Train ${m.train_rows} baris, test ${m.test_rows} baris.</p>
+        <p class="text-sm text-slate-500">${m.limitation || "Angka ini hanya demo pipeline pada data dummy, bukan forecast untuk ditindaklanjuti."}</p>`;
+    }
     document.getElementById("insights").innerHTML = `
       <div class="card">
         <p>Total produk contoh: ${d.total_products}</p>
         <p>Total stok contoh: ${d.total_stock}</p>
         <p>Produk stok menipis/habis: ${d.low_stock_count}</p>
         <ul class="text-sm mt-2">${d.low_stock_products.map((p) => `<li>${p.name} - stok ${p.stock}</li>`).join("")}</ul>
+        ${dsHtml}
       </div>`;
   } catch {
     setStatus(status, "error", "Gagal memuat ringkasan.");

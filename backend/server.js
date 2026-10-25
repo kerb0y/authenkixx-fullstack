@@ -25,6 +25,7 @@ const {
   loadAiHistory,
   appendAiHistory,
 } = require("./src/storage");
+const { loadDsOutputs } = require("./src/ds_outputs");
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -131,10 +132,17 @@ app.post("/api/v1/products/:id/stock", (req, res) => {
   res.status(201).json({ status: "success", data: { product, movement } });
 });
 
-// --- Business insights (computed from dummy inventory only) -----------
+// --- Business insights: dummy inventory + Data Science outputs -------
+// Phase 1: the Data Science section is read from
+// data-science/outputs/business_summary.json and baseline_model.json
+// via DS_OUTPUTS_DIR (default ../../data-science/outputs from
+// fullstack/backend). If those files are missing, the endpoint still
+// returns the inventory-only insights with data_science: null and a
+// clear note, and never crashes.
 app.get("/api/v1/insights", (req, res) => {
   const { products } = loadInventory();
   const lowStock = products.filter((p) => p.stock <= 5);
+  const ds = loadDsOutputs();
   ok(res, {
     total_products: products.length,
     total_stock: products.reduce((sum, p) => sum + p.stock, 0),
@@ -146,7 +154,20 @@ app.get("/api/v1/insights", (req, res) => {
       habis: products.filter((p) => p.availability === "habis").length,
     },
     data_label: "dummy",
-    note: "Computed from prototype dummy inventory only. Data Science dashboard outputs are integrated here in the final version.",
+    note: ds.available
+      ? "Inventory totals computed from prototype dummy inventory; data_science section read from Data Science dummy outputs."
+      : "Inventory totals computed from prototype dummy inventory only; Data Science outputs were not found (see data_science_note).",
+    data_science: ds.available
+      ? {
+          business_summary: ds.business_summary,
+          baseline_model: ds.baseline_model,
+          source_dir: ds.source_dir,
+          data_label: "dummy",
+        }
+      : null,
+    data_science_note: ds.available
+      ? "Data Science outputs loaded from DS_OUTPUTS_DIR; all figures are dummy data."
+      : `Data Science outputs not found in DS_OUTPUTS_DIR (${ds.source_dir}); showing inventory-only insights.`,
   });
 });
 
