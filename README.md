@@ -4,6 +4,19 @@ Ini masih prototype, ya. Dibuat oleh Ade Bintang. Semua datanya
 dummy. Nggak ada data asli UMKM, nggak ada data customer, nggak ada
 password, dan nggak ada sinkronisasi otomatis ke platform lain.
 
+## Data baru: katalog Nike dummy (25 Oktober 2026)
+
+Inventory lama yang cuma 6 produk generik sudah diganti dengan
+katalog dummy Nike: 120 produk (Sneakers 48, Running 30,
+Trail Running 18, Sandal dan Clogs 12, Basketball 6, Training 6),
+total stok dummy 2.302, dengan 90 tersedia, 24 menipis, dan 6 habis.
+ID produknya sekarang NK-DUMMY-001 sampai NK-DUMMY-120, dan Data
+Science sekarang pakai produk yang sama, jadi nggak ada lagi
+ketidakcocokan seperti di Fase 1 antara inventory dan ringkasan
+Data Science. Demo statis GitHub Pages juga sudah dibuat ulang dari
+data baru ini. Smoke test diperbarui ke produk NK-DUMMY-001 dan
+total Data Science baru, tetap 11/11 lolos.
+
 ## Yang berubah di Fase 1 (25 Oktober 2026)
 
 - Endpoint `GET /api/v1/insights` sekarang ikut menampilkan bagian
@@ -116,9 +129,10 @@ npm run build     # build produksi
   karena akun integrasi GitHub yang dipakai Muse tidak diizinkan
   GitHub untuk push file workflow (`.github/workflows/`), jadi
   deploy otomatis lewat Actions tidak bisa dipasang dari sini.
-  Buat mengaktifkan Pages, di Settings repo pilih Pages lalu
-  Source: Deploy from a branch, Branch: gh-pages, Folder: / (root),
-  lalu Save. Build-nya pakai base `/authenkixx-fullstack/` supaya
+  GitHub mengaktifkan Pages otomatis begitu branch `gh-pages`
+  di-push (dikonfirmasi Ade pada 2026-10-25 tanpa mengubah setting
+  Pages apa pun), jadi tidak perlu langkah manual di Settings.
+  Build-nya pakai base `/authenkixx-fullstack/` supaya
   asetnya nggak 404.
   Penting dan jujur: GitHub Pages cuma hosting statis, jadi yang
   tampil di sana itu demo baca saja. Daftar produk, detail produk,

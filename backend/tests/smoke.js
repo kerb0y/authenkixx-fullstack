@@ -25,7 +25,7 @@ async function main() {
     const products = (await r.json()).data;
     check("GET /api/v1/products returns dummy products", Array.isArray(products) && products.length >= 1);
 
-    r = await fetch(`${base}/api/v1/products/DUMMY-001`);
+    r = await fetch(`${base}/api/v1/products/NK-DUMMY-001`);
     check("GET /api/v1/products/:id returns 200 for existing product", r.status === 200);
 
     r = await fetch(`${base}/api/v1/products/NOPE`);
@@ -38,7 +38,7 @@ async function main() {
     });
     check("POST invalid product returns 400 (Joi validation)", r.status === 400);
 
-    r = await fetch(`${base}/api/v1/products/DUMMY-001/stock`, {
+    r = await fetch(`${base}/api/v1/products/NK-DUMMY-001/stock`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ type: "out", quantity: 999999, note: "smoke test, must fail" }),
@@ -61,8 +61,8 @@ async function main() {
     );
     check(
       "GET /api/v1/insights data_science totals match dummy outputs",
-      insights.data_science.business_summary.total_units_sold_dummy === 633 &&
-        insights.data_science.business_summary.total_revenue_dummy_idr === 203667000
+      insights.data_science.business_summary.total_units_sold_dummy === 82526 &&
+        insights.data_science.business_summary.total_revenue_dummy_idr === 186375340000
     );
 
     // Missing-files fallback: loader must not throw and must report nulls.
