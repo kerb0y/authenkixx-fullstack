@@ -64,8 +64,11 @@ result.
 
 ### Not yet built
 
-- Public deployment to a free tier (frontend, backend, production
-  database). Phase 1 runs locally only.
+- Full public deployment to a free tier. Frontend only is deployed
+  as a static read-only demo on GitHub Pages
+  (https://kerb0y.github.io/authenkixx-fullstack/); backend,
+  Gen AI service, and production database are not deployed yet, so
+  stock updates and AI chat do not work on Pages.
 - Real embedding model plus vector database RAG (ChromaDB, FAISS,
   Pinecone, or Weaviate). Phase 1 uses TF-IDF retrieval only.
 - Login or multi-user authentication. Phase 1 is owner-only and

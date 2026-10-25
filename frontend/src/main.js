@@ -2,6 +2,7 @@ import {
   askAi,
   getInsights,
   getProduct,
+  isStaticPages,
   listMovements,
   listProducts,
   updateStock,
@@ -9,6 +10,15 @@ import {
 
 const app = document.getElementById("app");
 let currentPage = "list";
+
+// On GitHub Pages there is no backend, so show an honest static-demo
+// banner instead of letting users discover broken buttons one by one.
+if (isStaticPages()) {
+  const banner = document.createElement("div");
+  banner.className = "max-w-5xl mx-auto px-4 pt-4";
+  banner.innerHTML = `<p class="bg-amber-100 border border-amber-300 rounded px-3 py-2 text-sm">Versi GitHub Pages ini demo statis (baca saja, data contoh). Daftar produk dan ringkasan tampil dari data contoh. Update stok dan chat AI butuh backend, jadi sementara nonaktif sampai backend di-deploy.</p>`;
+  document.body.insertBefore(banner, app);
+}
 
 function setStatus(el, state, text) {
   el.innerHTML = `<p class="text-sm ${state === "error" ? "text-red-600" : "text-slate-500"}">${text}</p>`;
@@ -90,7 +100,7 @@ async function renderStock() {
       setStatus(status, "success", `Berhasil. Stok baru ${result.product.name}: ${result.product.stock} (${result.product.availability}).`);
     } catch (err) {
       const msg = err.response?.data?.message || "Gagal menyimpan update stok.";
-      setStatus(status, "error", `Gagal: ${msg}`);
+      setStatus(status, "error", `Gagal: ${msg}${isStaticPages() ? " Di GitHub Pages, fitur ini nonaktif karena backend belum di-deploy." : ""}`);
     }
   });
 }
@@ -116,7 +126,7 @@ async function renderChat() {
       answerBox.classList.remove("hidden");
     } catch (err) {
       const msg = err.response?.data?.message || "Layanan AI tidak tersedia.";
-      setStatus(status, "error", `Gagal: ${msg}`);
+      setStatus(status, "error", `Gagal: ${msg}${isStaticPages() ? " Di GitHub Pages, fitur ini nonaktif karena backend belum di-deploy." : ""}`);
     }
   });
 }

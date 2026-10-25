@@ -7,14 +7,59 @@ const api = axios.create({
   timeout: 20000,
 });
 
+// GitHub Pages is static hosting only, so there is no backend there.
+// On github.io, read-only pages fall back to the bundled demo data
+// (frontend/public/demo-data.json, same dummy catalogue as the
+// backend inventory). Stock updates and AI chat have no fallback:
+// they genuinely need the backend, so they stay unavailable on Pages
+// until the backend is deployed elsewhere.
+export function isStaticPages() {
+  return (
+    typeof window !== "undefined" &&
+    window.location.hostname.endsWith("github.io")
+  );
+}
+
+let demoCache = null;
+
+async function loadDemo() {
+  if (!demoCache) {
+    const res = await fetch(`${import.meta.env.BASE_URL}demo-data.json`);
+    if (!res.ok) {
+      throw new Error("Demo data not available");
+    }
+    demoCache = await res.json();
+  }
+  return demoCache;
+}
+
 export async function listProducts(params = {}) {
-  const { data } = await api.get("/products", { params });
-  return data.data;
+  try {
+    const { data } = await api.get("/products", { params });
+    return data.data;
+  } catch (err) {
+    if (isStaticPages()) {
+      return (await loadDemo()).products;
+    }
+    throw err;
+  }
 }
 
 export async function getProduct(id) {
-  const { data } = await api.get(`/products/${id}`);
-  return data.data;
+  try {
+    const { data } = await api.get(`/products/${id}`);
+    return data.data;
+  } catch (err) {
+    if (isStaticPages()) {
+      const demo = await loadDemo();
+      const product = demo.products.find((p) => p.id === id);
+      if (!product) {
+        throw err;
+      }
+      return product;
+    }
+    throw err;
+  }
 }
 
 export async function updateStock(id, payload) {
@@ -23,8 +68,16 @@ export async function updateStock(id, payload) {
 }
 
 export async function listMovements(productId) {
-  const { data } = await api.get("/movements", { params: { product_id: productId } });
-  return data.data;
+  try {
+    const { data } = await api.get("/movements", { params: { product_id: productId } });
+    return data.data;
+  } catch (err) {
+    if (isStaticPages()) {
+      const demo = await loadDemo();
+      return demo.movements.filter((m) => m.product_id === productId);
+    }
+    throw err;
+  }
 }
 
 export async function askAi(message) {
@@ -33,6 +86,13 @@ export async function askAi(message) {
 }
 
 export async function getInsights() {
-  const { data } = await api.get("/insights");
-  return data.data;
+  try {
+    const { data } = await api.get("/insights");
+    return data.data;
+  } catch (err) {
+    if (isStaticPages()) {
+      return (await loadDemo()).insights;
+    }
+    throw err;
+  }
 }

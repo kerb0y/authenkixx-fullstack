@@ -110,12 +110,28 @@ npm run build     # build produksi
 
 ## Catatan deploy (free tier, buat versi final)
 
-- Frontend: Netlify atau Cloudflare Pages (free tier).
-- Backend: Render (free tier).
-- Database (produksi): Neon (free tier, Postgres).
-- Prototype ini cuma jalan lokal, belum di-deploy di Fase 1, dan
-  mau di-deploy atau demo lokal saja itu masih jadi keputusan tim
-  yang terbuka.
+- GitHub Pages (gratis, domain github.io): frontend statis di
+  https://kerb0y.github.io/authenkixx-fullstack/
+  Caranya pakai branch `gh-pages` yang berisi hasil build frontend,
+  karena akun integrasi GitHub yang dipakai Muse tidak diizinkan
+  GitHub untuk push file workflow (`.github/workflows/`), jadi
+  deploy otomatis lewat Actions tidak bisa dipasang dari sini.
+  Buat mengaktifkan Pages, di Settings repo pilih Pages lalu
+  Source: Deploy from a branch, Branch: gh-pages, Folder: / (root),
+  lalu Save. Build-nya pakai base `/authenkixx-fullstack/` supaya
+  asetnya nggak 404.
+  Penting dan jujur: GitHub Pages cuma hosting statis, jadi yang
+  tampil di sana itu demo baca saja. Daftar produk, detail produk,
+  dan ringkasan tampil dari data contoh yang dibundel di
+  `frontend/public/demo-data.json` (katalog dummy yang sama dengan
+  inventory backend). Update stok dan chat AI butuh backend, jadi di
+  Pages itu nonaktif sampai backend di-deploy. Buat mengaktifkan
+  Pages, di Settings repo pilih Pages lalu Source: GitHub Actions.
+- Backend (rencana): Render (free tier).
+- Database (produksi, rencana): Neon (free tier, Postgres).
+- Backend, Gen AI, dan Data Science belum di-deploy, jadi checklist
+  "bisa diakses online" baru terpenuhi sebagian lewat frontend
+  statis ini.
 
 ## Kontrak API
 
