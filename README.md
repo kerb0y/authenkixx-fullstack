@@ -1,40 +1,46 @@
-# Full-Stack Prototype (Authenkixx Capstone)
+# Prototype Full-Stack (Capstone Authenkixx)
 
-Prototype only. By Ade Bintang. All data is dummy. No real UMKM data,
-no customer data, no passwords, no automatic platform sync.
+Ini masih prototype, ya. Dibuat oleh Ade Bintang. Semua datanya
+dummy. Nggak ada data asli UMKM, nggak ada data customer, nggak ada
+password, dan nggak ada sinkronisasi otomatis ke platform lain.
 
-## Phase 1 (2026-10-25): what changed
+## Yang berubah di Fase 1 (25 Oktober 2026)
 
-- `GET /api/v1/insights` now includes a `data_science` section read
-  from `data-science/outputs/business_summary.json` and
-  `baseline_model.json` (loader: `backend/src/ds_outputs.js`).
-  Directory is set by `DS_OUTPUTS_DIR` (default
-  `../../data-science/outputs` from `fullstack/backend`). If the
-  files are missing, the endpoint returns inventory-only insights
-  with `data_science: null` and a clear note, and never crashes.
-- The frontend business summary page now displays the Data Science
-  totals, units by channel, low-stock summary, and baseline model
-  metrics, all labelled dummy (or the missing-outputs note when
-  `data_science` is null).
-- Smoke tests extended to 11/11 pass (8 original + 3 new Phase 1
-  checks: DS section present and labelled dummy, DS totals match
-  the dummy outputs, and the missing-directory loader fallback).
-- Phase 1 changes are local only and have NOT been pushed yet.
+- Endpoint `GET /api/v1/insights` sekarang ikut menampilkan bagian
+  `data_science` yang dibaca dari
+  `data-science/outputs/business_summary.json` dan
+  `baseline_model.json` (loader-nya ada di
+  `backend/src/ds_outputs.js`). Foldernya diatur lewat
+  `DS_OUTPUTS_DIR` (default-nya `../../data-science/outputs` kalau
+  dilihat dari `fullstack/backend`). Kalau file-nya nggak ketemu,
+  endpoint tetap jalan dan cuma menampilkan insights dari inventory,
+  dengan `data_science: null` plus catatan yang jelas, jadi nggak
+  sampai crash.
+- Halaman ringkasan bisnis di frontend sekarang menampilkan total
+  dari Data Science, unit per kanal, ringkasan stok menipis, dan
+  metrik model baseline, semuanya tetap dilabeli dummy (atau catatan
+  kalau output-nya lagi nggak ada).
+- Smoke test jadi 11/11 lolos (8 yang lama ditambah 3 cek baru di
+  Fase 1: bagian DS ada dan dilabeli dummy, total DS cocok dengan
+  output dummy, dan fallback kalau folder-nya hilang).
+- Fase 1 ini sudah di-push ke GitHub.
 
-## What this repo covers
+## Repo ini isinya apa
 
-A decoupled Full-Stack prototype for centralized inventory:
+Ini prototype Full-Stack yang frontend dan backend-nya dipisah,
+buat ngatur inventory terpusat:
 
-- Backend: Express, API routes under `/api/v1/` (products, stock
-  movements, insights, AI proxy).
-- Frontend: Vite scaffold, Tailwind CSS (CDN in the prototype; install
-  it properly for production), Axios networking, responsive layout.
-- Mockup-first pages (simple, working pages, not just mockups):
-  product list, product detail (with stock history), stock update,
-  Gen AI chat panel, and a business summary page.
+- Backend: Express, rute API di bawah `/api/v1/` (produk, pergerakan
+  stok, insights, dan proxy AI).
+- Frontend: Vite, Tailwind CSS (di prototype ini masih lewat CDN,
+  buat versi produksi nanti diinstal beneran), Axios buat
+  networking, dan layout yang responsif.
+- Halaman-halamannya simpel tapi beneran jalan, bukan cuma mockup:
+  daftar produk, detail produk (plus riwayat stok), update stok,
+  panel chat AI, dan halaman ringkasan bisnis.
 
-The main user is the shop owner only (single-user prototype; no
-login system yet, listed as tomorrow's work if the team wants it).
+Pengguna utamanya cuma pemilik toko (prototype single-user, belum
+ada sistem login, itu masuk kerjaan lanjutan kalau tim memang mau).
 
 ## Backend
 
@@ -42,77 +48,84 @@ login system yet, listed as tomorrow's work if the team wants it).
 cd backend
 npm install
 npm start          # port 3001
-npm run smoke      # smoke tests (verified: 8/8 pass, see below)
+npm run smoke      # smoke test (terverifikasi: 11/11 lolos)
 ```
 
-- Persistent storage (prototype): `backend/data/inventory.json` and
-  `backend/data/ai_history.json`. The brief allows SQLite or a JSON
-  file for the prototype; production can move to Neon/Postgres later.
-- Schema validation: Joi (`backend/src/validation.js`). Invalid input
-  returns HTTP 400 with a clear message and writes nothing.
-- Success / failure / loading: every API response uses
-  `{ status: "success", data }` or `{ status: "error", message }`;
-  the frontend shows loading, success, and error states on every page.
-- Gen AI access: the backend proxies AI chat
-  (`POST /api/v1/ai/chat` -> `GENAI_SERVICE_URL`, default
-  http://127.0.0.1:8000/chat). The frontend NEVER calls the Gen AI
-  service directly. If Gen AI is down, the backend returns HTTP 502
-  with a clear message instead of crashing.
-- Gen AI history: every proxied chat is stored in
-  `backend/data/ai_history.json` (message, intent, route, answer,
-  timestamp only; no customer data).
-- Business insights: `GET /api/v1/insights` computes totals and
-  low-stock counts from the dummy inventory AND (Phase 1) serves
-  the Data Science outputs in its `data_science` section (see
-  Phase 1 above and `API_CONTRACT.md`). The Streamlit dashboard
-  embed in the web app is still open work.
+- Penyimpanan buat prototype: `backend/data/inventory.json` dan
+  `backend/data/ai_history.json`. Buat prototype, file JSON kayak
+  gini udah cukup, nanti kalau udah produksi bisa pindah ke
+  Neon/Postgres.
+- Validasi skema pakai Joi (`backend/src/validation.js`). Kalau
+  input-nya nggak valid, dibalas HTTP 400 dengan pesan yang jelas
+  dan datanya nggak ikut tersimpan.
+- Sukses, gagal, dan loading: semua respons API pakai format
+  `{ status: "success", data }` atau `{ status: "error", message }`,
+  dan frontend menampilkan status loading, sukses, dan error di
+  tiap halaman.
+- Akses Gen AI: backend yang jadi perantara buat chat AI
+  (`POST /api/v1/ai/chat` -> `GENAI_SERVICE_URL`, default-nya
+  http://127.0.0.1:8000/chat). Frontend NGGAK PERNAH manggil service
+  Gen AI langsung. Kalau Gen AI lagi down, backend membalas HTTP 502
+  dengan pesan yang jelas, bukan malah crash.
+- Riwayat Gen AI: setiap chat yang lewat proxy disimpan di
+  `backend/data/ai_history.json` (cuma pesan, intent, rute jawaban,
+  dan waktu, tanpa data customer).
+- Business insights: `GET /api/v1/insights` menghitung total dan
+  stok menipis dari inventory dummy, DAN (sejak Fase 1) ikut
+  menampilkan output Data Science di bagian `data_science` (lihat
+  bagian Fase 1 di atas dan `API_CONTRACT.md`). Buat nempelin
+  dashboard Streamlit ke dalam web app, itu masih kerjaan yang
+  terbuka.
 
-Smoke test results (verified by running `npm run smoke`):
-11/11 pass in Phase 1: health, product list, product detail,
-unknown product 404, invalid product 400, stock-below-zero 400,
-insights totals, insights data_science section (dummy), insights
-DS totals match dummy outputs, DS missing-directory fallback
-(no crash), AI chat 200-or-clear-502.
+Hasil smoke test (sudah dijalankan lewat `npm run smoke`):
+11/11 lolos di Fase 1: health, daftar produk, detail produk, produk
+nggak dikenal 404, produk nggak valid 400, stok di bawah nol 400,
+total insights, bagian data_science di insights (dummy), total DS di
+insights cocok dengan output dummy, fallback kalau folder DS hilang
+(tanpa crash), dan chat AI 200 atau 502 yang jelas.
 
 ## Frontend
 
 ```bash
 cd frontend
 npm install
-npm run dev       # Vite dev server on port 5173, /api proxied to port 3001
-npm run build     # production build
+npm run dev       # server dev Vite di port 5173, /api diproxy ke port 3001
+npm run build     # build produksi
 ```
 
-- Axios is used for all networking (`frontend/src/api.js`).
-- Set `VITE_API_BASE_URL` in `.env` if the backend is not on the
-  Vite proxy; otherwise `/api` is proxied to `http://localhost:3001`.
-- Responsive: product cards stack on phones, 2 columns on tablets,
-  3 columns on desktops (see `frontend/src/style.css`).
-- Phase 1 summary page: shows Data Science totals, units by
-  channel, low-stock summary, and baseline model metrics, all
-  labelled dummy.
-- Design decisions (not just a generic template): dark header with a
-  visible "(Data Contoh)" label on every page, availability badges
-  (tersedia / menipis / habis), channel shown explicitly as a label
-  (not sync), and a footer stating the prototype and dummy-data limits
-  on every page.
+- Semua networking pakai Axios (`frontend/src/api.js`).
+- Kalau backend-nya nggak lewat proxy Vite, atur `VITE_API_BASE_URL`
+  di `.env`, kalau nggak, `/api` otomatis diproxy ke
+  http://localhost:3001.
+- Responsif: kartu produk numpuk di HP, 2 kolom di tablet, dan
+  3 kolom di desktop (lihat `frontend/src/style.css`).
+- Halaman ringkasan Fase 1: menampilkan total Data Science, unit per
+  kanal, ringkasan stok menipis, dan metrik model baseline, semuanya
+  dilabeli dummy.
+- Keputusan desain (bukan sekadar template umum): header gelap
+  dengan label "(Data Contoh)" yang kelihatan di tiap halaman, badge
+  ketersediaan (tersedia / menipis / habis), kanal ditampilkan
+  jelas-jelas sebagai label (bukan sinkronisasi), dan footer yang
+  menyatakan batasan prototype dan data dummy di tiap halaman.
 
-## Deploy note (free tier, for the final version)
+## Catatan deploy (free tier, buat versi final)
 
-- Frontend: Netlify or Cloudflare Pages (free tier).
+- Frontend: Netlify atau Cloudflare Pages (free tier).
 - Backend: Render (free tier).
-- Database (production): Neon (free tier, Postgres).
-- The prototype runs locally only; nothing in this repo is deployed
-  in Phase 1, and Phase 1 was not pushed to GitHub (the main agent
-  pushes after verification). Whether to deploy at all, or demo
-  locally only, is still an open team decision.
+- Database (produksi): Neon (free tier, Postgres).
+- Prototype ini cuma jalan lokal, belum di-deploy di Fase 1, dan
+  mau di-deploy atau demo lokal saja itu masih jadi keputusan tim
+  yang terbuka.
 
-## API contract
+## Kontrak API
 
-See `API_CONTRACT.md` in this folder (same contract in gen-ai/ and
-data-science/). Endpoints, request/response formats, and error codes
-are agreed across the three repos before integration.
+Lihat `API_CONTRACT.md` di folder ini (kontrak yang sama juga ada
+di repo gen-ai dan data-science). Endpoint, format request/response,
+dan kode error sudah disepakati ketiga repo sebelum integrasi.
 
 ## Disclaimer
 
-See CHECKLIST_STATUS.md in this repo. Phase 1 is not the final version. The final target is to match the Authenkixx use-case document and fulfil all Main Quest checklist items for Full-Stack, Gen AI, and Data Science. Phase 1 does not yet claim full checklist compliance.
+Lihat CHECKLIST_STATUS.md di repo ini. Fase 1 bukan versi final.
+Target akhirnya adalah menyesuaikan dokumen use case Authenkixx dan
+memenuhi semua checklist Main Quest buat Full-Stack, Gen AI, dan
+Data Science. Fase 1 belum mengklaim sudah memenuhi semuanya.
